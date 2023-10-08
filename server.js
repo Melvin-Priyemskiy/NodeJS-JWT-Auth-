@@ -41,7 +41,7 @@ app.post('/api/login', (req, res) => {
     
     for (let user of users){
         if(username == user.username && password == user.password) {
-            let token = jwt.sign({id: user.id, username: user.username }, secretKey, {expiresIn: '7d'});
+            let token = jwt.sign({id: user.id, username: user.username }, secretKey, {expiresIn: '3m'});
             res.json({
                 success: true,
                 err: null,
@@ -76,6 +76,14 @@ app.get('/api/prices', jwtMW, (req, res) => {
     res.json({
         success:true,
         myContent: 'this is the price 200.'
+    });
+});
+
+app.get('/api/settings', jwtMW, (req, res) => {
+    console.log(req);
+    res.json({
+        success:true,
+        myContent: 'this is the settings'
     });
 });
 
