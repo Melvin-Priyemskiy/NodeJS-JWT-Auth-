@@ -56,7 +56,6 @@
     }
 
     function getDashboard(){
-        history.pushState(null, null, 'http://localhost:3000/api/dashboard')
         const token = localStorage.getItem('jwt')
         axios.get('/api/dashboard', {
             headers: {
@@ -66,13 +65,13 @@
                     const token = res.data.token;
                     document.querySelector('h1.row').innerHTML = 'Dashboard';
                     document.querySelector('main').innerHTML = res.data.myContent;
+                    history.pushState(null, null, 'http://localhost:3000/api/dashboard')
                 }
 
             });
     }
 
     function getSettings(){
-        history.pushState(null, null, 'http://localhost:3000/api/settings')
         const token = localStorage.getItem('jwt')
         axios.get('/api/settings', {
             headers: {
@@ -82,6 +81,7 @@
                     const token = res.data.token;
                     document.querySelector('h1.row').innerHTML = 'settings';
                     document.querySelector('main').innerHTML = res.data.myContent;
+                    history.pushState(null, null, 'http://localhost:3000/api/settings')
                 }
 
             });
